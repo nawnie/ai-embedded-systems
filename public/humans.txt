@@ -1,0 +1,9 @@
+# Ai Embedded Systems
+
+Site: https://aiembeddedsystems.com/
+Description: Robotics and embedded AI systems for physical-world intelligence.
+Product focus: Rnv1 robotics, onboard perception, local AI, sensor fusion, memory, and robust control.
+Founders: Robert Delgado, Co-Founder, Robotics; Shawn O'Hagan, Co-Founder, Software and AI.
+Contact: sohagan.dev@aiembeddedsystems.com; robert@aiembeddedsystems.com
+GitHub: https://github.com/nawnie
+Public GitHub repo: https://github.com/nawnie/ai-embedded-systems

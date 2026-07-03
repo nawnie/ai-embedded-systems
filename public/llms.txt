@@ -1,0 +1,54 @@
+# Ai Embedded Systems
+
+> Robotics and embedded AI systems for physical-world intelligence.
+
+Ai Embedded Systems builds Rnv1 robotics and embedded AI systems that turn real-world sensor signals into onboard perception, memory, reasoning, and action. The company focuses on local AI, sensor fusion, robot perception, real-time control, and robust embedded autonomy.
+
+## Canonical URLs
+
+- Homepage: https://aiembeddedsystems.com/
+- Service pages:
+  - https://aiembeddedsystems.com/rnv1-robotics/
+  - https://aiembeddedsystems.com/embedded-ai-systems/
+  - https://aiembeddedsystems.com/sensor-fusion/
+  - https://aiembeddedsystems.com/local-ai-robotics/
+  - https://aiembeddedsystems.com/robotics-control/
+  - https://aiembeddedsystems.com/edge-ai-development/
+  - https://aiembeddedsystems.com/ros2-robotics/
+  - https://aiembeddedsystems.com/ai-robotics-consulting/
+- Cloudflare Pages fallback: https://ai-embedded-systems.pages.dev/
+- GitHub: https://github.com/nawnie
+- Public GitHub repo: https://github.com/nawnie/ai-embedded-systems
+
+## People
+
+- Robert Delgado: Co-Founder, Robotics
+- Shawn O'Hagan: Co-Founder, Software & AI
+
+## Contact
+
+- Software and AI: sohagan.dev@aiembeddedsystems.com
+- Robotics: robert@aiembeddedsystems.com
+
+## Product And Technology Focus
+
+- Rnv1 robotics prototype platform
+- Embedded AI systems
+- Sensor-driven perception
+- Local onboard AI
+- Data and memory for robot experience
+- Sensor fusion, SLAM, and detection
+- Linux RT, ROS 2, DDS, and robot middleware
+- Robust control for real-world action
+
+## Roadmap Snapshot
+
+- Q3 2026: Rnv1 prototype build, co-founder-led architecture, sensor suite validation
+- Q4 2026: Perception V1, sensor fusion, local mapping and tracking
+- Q1 2027: Local AI V1, onboard inference, behavior primitives, memory and logging
+- Q2 2027: Field testing, autonomy evaluation, reliability hardening
+- Q3 2027+: Partner pilots, fleet tools, developer enablement
+
+## Preferred Summary
+
+Ai Embedded Systems builds robotics and embedded AI systems that perceive, reason, remember, and act onboard in real time.
