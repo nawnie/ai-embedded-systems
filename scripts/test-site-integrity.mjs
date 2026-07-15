@@ -20,6 +20,7 @@ const index = await read("index.html");
 const headers = await read("public/_headers");
 const sitemap = await read("public/sitemap.xml");
 const assistant = await read("public/inquiry-assistant.js");
+const { onRequest: runMiddleware } = await import("../functions/_middleware.js");
 
 for (const topic of topics) {
   const html = await read(`public/${topic}/index.html`);
@@ -39,7 +40,15 @@ assert(assistant.includes("aes-guide-consent"), "Project guide consent is missin
 assert(assistant.includes('aria-busy'), "Project guide busy state is not exposed");
 assert(assistant.includes('href="/privacy/"'), "Project guide does not link to privacy");
 
-console.log(`Site integrity checks passed for ${topics.length} technical pages, privacy, 404, headers, schema, and project guide.`);
+const next = () => new Response("asset", { status: 200 });
+const allowed = await runMiddleware({ request: new Request("https://aiembeddedsystems.com/privacy/"), next });
+const missing = await runMiddleware({ request: new Request("https://aiembeddedsystems.com/not-a-real-page/"), next });
+const redirected = await runMiddleware({ request: new Request("https://www.aiembeddedsystems.com/privacy/"), next });
+assert(allowed.status === 200, "Middleware blocked a known page");
+assert(missing.status === 404 && (await missing.text()).includes("Page not found"), "Middleware did not return the explicit 404 page");
+assert(redirected.status === 301 && redirected.headers.get("location") === "https://aiembeddedsystems.com/privacy/", "Canonical redirect changed");
+
+console.log(`Site integrity checks passed for ${topics.length} technical pages, privacy, 404 routing, headers, schema, and project guide.`);
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
