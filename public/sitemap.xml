@@ -2,47 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aiembeddedsystems.com/</loc>
-    <lastmod>2026-07-03</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/rnv1-robotics/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/embedded-ai-systems/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/sensor-fusion/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/local-ai-robotics/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/robotics-control/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/edge-ai-development/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/ros2-robotics/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>  <url>
+  </url>
+  <url>
     <loc>https://aiembeddedsystems.com/ai-robotics-consulting/</loc>
     <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url></urlset>
+  </url>
+</urlset>
