@@ -50,7 +50,7 @@ async function waitForUrl(url, previewProcess, timeoutMs = 20_000) {
   let lastError;
 
   while (Date.now() < deadline) {
-    if (previewProcess?.exitCode !== null) {
+    if (previewProcess && previewProcess.exitCode !== null) {
       throw new Error(`Preview process exited early with code ${previewProcess.exitCode}`);
     }
 
