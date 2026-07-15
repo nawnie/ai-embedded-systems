@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "qa:capture": "node scripts/capture-qa.mjs",
+    "qa": "npm run build && npm run qa:capture"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
