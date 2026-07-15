@@ -442,7 +442,7 @@ function About() {
         </figure>
 
         <aside className="contact-card" id="contact" aria-labelledby="contact-title">
-          <p className="contact-kicker">Ready to get started?</p>
+          <p className="contact-kicker">Contact us</p>
           <h3 id="contact-title">Tell us where the work slows down.</h3>
           <p>
             We will help you separate useful opportunities from expensive distractions
