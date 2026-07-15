@@ -29,10 +29,10 @@ async function findFreePort() {
 }
 
 function startPreview(port) {
-  const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
+  const viteCli = fileURLToPath(new URL("../node_modules/vite/bin/vite.js", import.meta.url));
   const child = spawn(
-    npmCommand,
-    ["run", "preview", "--", "--host", "127.0.0.1", "--port", String(port), "--strictPort"],
+    process.execPath,
+    [viteCli, "preview", "--host", "127.0.0.1", "--port", String(port), "--strictPort"],
     {
       cwd: projectRoot,
       env: process.env,
@@ -141,12 +141,22 @@ try {
 
     const consoleMessages = [];
     const pageErrors = [];
+    const failedResponses = [];
     page.on("console", (message) => {
       if (["error", "warning"].includes(message.type())) {
-        consoleMessages.push({ type: message.type(), text: message.text() });
+        consoleMessages.push({
+          type: message.type(),
+          text: message.text(),
+          location: message.location(),
+        });
       }
     });
     page.on("pageerror", (error) => pageErrors.push(error.message));
+    page.on("response", (response) => {
+      if (response.status() >= 400) {
+        failedResponses.push({ status: response.status(), url: response.url() });
+      }
+    });
 
     await page.goto(previewUrl, { waitUntil: "networkidle" });
     await page.locator("h1").waitFor({ state: "visible" });
@@ -175,6 +185,7 @@ try {
       metrics,
       consoleMessages,
       pageErrors,
+      failedResponses,
       horizontalOverflow: metrics.scrollWidth > metrics.viewportWidth + 1,
     });
 
@@ -215,6 +226,7 @@ try {
     if (result.horizontalOverflow) issues.push("horizontal overflow");
     if (result.consoleMessages.length) issues.push("console warnings or errors");
     if (result.pageErrors.length) issues.push("page errors");
+    if (result.failedResponses.length) issues.push("failed network responses");
     return issues.map((issue) => `${result.viewport}: ${issue}`);
   });
 

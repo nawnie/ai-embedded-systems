@@ -56,9 +56,16 @@ npm run qa:capture
 
 The production build output is `dist/`. Local QA screenshots are written to `.qa/` and are intentionally ignored by Git.
 
-## Agent Handoff
+## Public Repository Boundary
 
-Coding agents must read the root `AGENTS.md` before making changes. The protected workspace and its backend infrastructure are outside the scope of ordinary public-homepage edits.
+This repository is intentionally limited to publishable website source, public
+company copy, public contact details, crawler files, and frontend QA tooling.
+
+Do not commit credentials, account identifiers, private deployment notes,
+customer or workspace data, Google Drive exports, local machine paths, agent
+state, screenshots, archives, or internal company records. Private workspace
+and training-service code belongs in the company's private repositories or
+approved Drive storage, not in this public website repository.
 
 Public crawler files live in `public/`:
 
