@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ChartBar,
@@ -18,7 +18,11 @@ import {
   UsersThree,
   X,
 } from "@phosphor-icons/react";
-import heroRobot from "./assets/hero-robot.png";
+import heroCircuit from "./assets/hero-circuit.svg";
+import studioWorkbench from "./assets/studio-workbench.svg";
+
+const CONTACT_EMAIL = "sohagan.dev@aiembeddedsystems.com";
+const ROBOTICS_EMAIL = "robert@aiembeddedsystems.com";
 
 const navItems = [
   { label: "Sprint", href: "#sprint", id: "sprint" },
@@ -27,31 +31,19 @@ const navItems = [
   { label: "Contact", href: "#contact", id: "contact" },
 ];
 
-const consultationHref = `mailto:sohagan.dev@aiembeddedsystems.com?subject=${encodeURIComponent(
+function createMailto(subject, body) {
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+const consultationHref = createMailto(
   "AI Embedded Systems consultation request",
-)}&body=${encodeURIComponent(`Hi Shawn,
+  `Hi AI Embedded Systems,\n\nOrganization:\nMain challenge or opportunity:\nCurrent systems or data involved:\nDesired timeline:\n\nBest,`,
+);
 
-Organization:
-Main challenge or opportunity:
-Current systems or data involved:
-Desired timeline:
-
-Best,
-`)}`;
-
-const sprintHref = `mailto:sohagan.dev@aiembeddedsystems.com?subject=${encodeURIComponent(
+const sprintHref = createMailto(
   "Private AI Feasibility Sprint request",
-)}&body=${encodeURIComponent(`Hi Shawn,
-
-I am interested in the Private AI Feasibility Sprint.
-
-Organization:
-Main operational challenge:
-Current systems or data involved:
-Preferred kickoff timing:
-
-Best,
-`)}`;
+  `Hi AI Embedded Systems,\n\nI am interested in the Private AI Feasibility Sprint.\n\nOrganization:\nMain operational challenge:\nCurrent systems or data involved:\nPreferred kickoff timing:\n\nBest,`,
+);
 
 const capabilities = [
   { label: "Private and secure by design", icon: ShieldCheck },
@@ -113,25 +105,42 @@ const reasons = [
   "AI and embedded systems expertise",
   "Private and secure by design",
   "Real-world operations experience",
-  "Clear recommendations tied to value",
+  "Recommendations tied to measurable value",
 ];
 
 const founders = [
   {
     name: "Shawn O'Hagan",
     role: "Co-Founder, Software & AI",
-    email: "sohagan.dev@aiembeddedsystems.com",
+    email: CONTACT_EMAIL,
   },
   {
     name: "Robert Delgado",
     role: "Co-Founder, Robotics",
-    email: "robert@aiembeddedsystems.com",
+    email: ROBOTICS_EMAIL,
   },
 ];
+
+const currentYear = new Date().getFullYear();
+
+function Brand() {
+  return (
+    <span className="brand">
+      <span className="brand-mark" aria-hidden="true">
+        <span>愛</span>
+      </span>
+      <span className="brand-copy">
+        <strong>AI EMBEDDED</strong>
+        <span>SYSTEMS</span>
+      </span>
+    </span>
+  );
+}
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState("");
+  const menuButtonRef = useRef(null);
 
   useEffect(() => {
     const sections = navItems
@@ -170,6 +179,7 @@ function Header() {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
         setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
       }
     };
 
@@ -194,14 +204,8 @@ function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand" href="#top" aria-label="AI Embedded Systems home" onClick={closeMenu}>
-          <span className="brand-mark" aria-hidden="true">
-            <span>愛</span>
-          </span>
-          <span className="brand-copy">
-            <strong>AI EMBEDDED</strong>
-            <span>SYSTEMS</span>
-          </span>
+        <a href="#top" aria-label="AI Embedded Systems home" onClick={closeMenu}>
+          <Brand />
         </a>
 
         <nav
@@ -233,6 +237,7 @@ function Header() {
         </a>
 
         <button
+          ref={menuButtonRef}
           className="menu-toggle"
           type="button"
           aria-controls="primary-navigation"
@@ -240,7 +245,11 @@ function Header() {
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setIsMenuOpen((current) => !current)}
         >
-          {isMenuOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
+          {isMenuOpen ? (
+            <X size={24} weight="bold" aria-hidden="true" />
+          ) : (
+            <List size={24} weight="bold" aria-hidden="true" />
+          )}
         </button>
       </div>
     </header>
@@ -270,6 +279,7 @@ function Hero() {
             Explore the sprint
           </a>
         </div>
+        <p className="cta-note">The consultation link opens a pre-filled email to our team.</p>
 
         <div className="capability-row" aria-label="Core capabilities">
           {capabilities.map(({ label, icon: Icon }) => (
@@ -281,18 +291,21 @@ function Hero() {
         </div>
       </div>
 
-      <div className="hero-image">
+      <figure className="hero-image">
         <img
-          src={heroRobot}
-          alt="RNV1 embedded robotics platform"
+          src={heroCircuit}
+          width="520"
+          height="327"
+          alt="Warm-toned circuit board with a central embedded processor"
+          loading="eager"
           decoding="async"
           fetchPriority="high"
         />
-        <div className="hero-image-caption">
-          <span>Grounded in physical systems.</span>
+        <figcaption className="hero-image-caption">
+          <span>Built close to the hardware.</span>
           <strong>Private, local, practical.</strong>
-        </div>
-      </div>
+        </figcaption>
+      </figure>
     </section>
   );
 }
@@ -308,6 +321,9 @@ function Sprint() {
             A focused engagement to identify high-impact AI and automation opportunities,
             assess what is practical, and turn the strongest ideas into a clear implementation plan.
           </p>
+          <p className="section-emphasis">
+            Leave knowing what to build first, what not to build, and what it will take.
+          </p>
 
           <div className="outcome-row" aria-label="Sprint outcomes">
             {sprintOutcomes.map(({ label, icon: Icon }) => (
@@ -322,7 +338,7 @@ function Sprint() {
         <aside className="sprint-card" aria-label="Private AI Feasibility Sprint pricing and scope">
           <div className="sprint-card-heading">
             <div>
-              <span>Feasibility Sprint</span>
+              <span>Fixed-price sprint</span>
               <strong>$3,500</strong>
             </div>
             <span className="founding-note">Founding client pricing</span>
@@ -341,7 +357,9 @@ function Sprint() {
             Request your sprint
             <ArrowRight size={17} weight="bold" aria-hidden="true" />
           </a>
-          <p className="payment-note">50% upfront, 50% at delivery. Scope confirmed before kickoff.</p>
+          <p className="payment-note">
+            50% upfront, 50% at delivery. Scope is confirmed before work begins.
+          </p>
         </aside>
       </div>
     </section>
@@ -385,10 +403,10 @@ function About() {
           <p className="eyebrow eyebrow-light">Why work with us</p>
           <h2 id="about-title">Deep technical work, grounded in real operations.</h2>
           <p>
-            We are not selling AI theater. We help teams find the work worth doing,
-            understand the technical tradeoffs, and build a path people can actually use.
-            Our RNV1 robotics development keeps that advice anchored to real hardware,
-            real constraints, and real failure modes.
+            We combine software and AI architecture with robotics and embedded systems
+            experience. The result is practical work that survives real budgets, real data
+            constraints, and real operators. RNV1 development keeps that advice anchored to
+            real hardware, real constraints, and real failure modes.
           </p>
 
           <div className="reason-grid">
@@ -411,9 +429,21 @@ function About() {
           </div>
         </div>
 
+        <figure className="about-visual">
+          <img
+            src={studioWorkbench}
+            width="440"
+            height="471"
+            loading="eager"
+            decoding="async"
+            alt="Laptop and engineering notebook on a warm, dimly lit workbench"
+          />
+          <figcaption>From architecture sketches to systems that work in the field.</figcaption>
+        </figure>
+
         <aside className="contact-card" id="contact" aria-labelledby="contact-title">
           <p className="contact-kicker">Ready to get started?</p>
-          <h3 id="contact-title">Tell us where the friction is.</h3>
+          <h3 id="contact-title">Tell us where the work slows down.</h3>
           <p>
             We will help you separate useful opportunities from expensive distractions
             and identify a practical first move.
@@ -422,13 +452,14 @@ function About() {
             Request a consultation
             <ArrowRight size={17} weight="bold" aria-hidden="true" />
           </a>
-          <a className="contact-line" href="mailto:sohagan.dev@aiembeddedsystems.com">
+          <p className="contact-note">Opens a pre-filled email to Shawn O&apos;Hagan.</p>
+          <a className="contact-line" href={`mailto:${CONTACT_EMAIL}`}>
             <EnvelopeSimple size={18} aria-hidden="true" />
-            <span>sohagan.dev@aiembeddedsystems.com</span>
+            <span>{CONTACT_EMAIL}</span>
           </a>
-          <a className="contact-line" href="mailto:robert@aiembeddedsystems.com">
+          <a className="contact-line" href={`mailto:${ROBOTICS_EMAIL}`}>
             <EnvelopeSimple size={18} aria-hidden="true" />
-            <span>robert@aiembeddedsystems.com</span>
+            <span>{ROBOTICS_EMAIL}</span>
           </a>
         </aside>
       </div>
@@ -458,14 +489,8 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-main">
         <div className="footer-brand">
-          <a className="brand" href="#top" aria-label="AI Embedded Systems home">
-            <span className="brand-mark" aria-hidden="true">
-              <span>愛</span>
-            </span>
-            <span className="brand-copy">
-              <strong>AI EMBEDDED</strong>
-              <span>SYSTEMS</span>
-            </span>
+          <a href="#top" aria-label="AI Embedded Systems home">
+            <Brand />
           </a>
           <p>Secure, private AI and embedded systems for real-world operations.</p>
         </div>
@@ -499,7 +524,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <span>© 2026 AI Embedded Systems.</span>
+        <span>© {currentYear} AI Embedded Systems.</span>
         <span>Shawn O&apos;Hagan, Software &amp; AI · Robert Delgado, Robotics</span>
       </div>
     </footer>
