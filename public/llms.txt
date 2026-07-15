@@ -1,54 +1,70 @@
-# Ai Embedded Systems
+# AI Embedded Systems
 
-> Robotics and embedded AI systems for physical-world intelligence.
+> Private AI, embedded systems, robotics, and practical automation for real-world operations.
 
-Ai Embedded Systems builds Rnv1 robotics and embedded AI systems that turn real-world sensor signals into onboard perception, memory, reasoning, and action. The company focuses on local AI, sensor fusion, robot perception, real-time control, and robust embedded autonomy.
+AI Embedded Systems helps operations-heavy organizations identify useful AI and automation opportunities, assess technical and security constraints, and build a practical path toward implementation. The company also develops RNV1 robotics systems, providing hands-on experience with sensing, local compute, perception, control, and embedded autonomy.
 
 ## Canonical URLs
 
 - Homepage: https://aiembeddedsystems.com/
-- Service pages:
-  - https://aiembeddedsystems.com/rnv1-robotics/
-  - https://aiembeddedsystems.com/embedded-ai-systems/
-  - https://aiembeddedsystems.com/sensor-fusion/
-  - https://aiembeddedsystems.com/local-ai-robotics/
-  - https://aiembeddedsystems.com/robotics-control/
-  - https://aiembeddedsystems.com/edge-ai-development/
-  - https://aiembeddedsystems.com/ros2-robotics/
-  - https://aiembeddedsystems.com/ai-robotics-consulting/
 - Cloudflare Pages fallback: https://ai-embedded-systems.pages.dev/
 - GitHub: https://github.com/nawnie
-- Public GitHub repo: https://github.com/nawnie/ai-embedded-systems
+- Public GitHub repository: https://github.com/nawnie/ai-embedded-systems
+
+## Primary Commercial Offer
+
+### Private AI Feasibility Sprint
+
+- Founding-client price: USD 3,500
+- Payment structure: 50% upfront, 50% at delivery
+- Scope is confirmed before kickoff
+
+Deliverables:
+
+- discovery session
+- private AI and hardware assessment
+- data, security, and risk review
+- three high-value opportunity candidates
+- ROI and difficulty ranking
+- prototype or workflow demonstration
+- 90-day implementation roadmap
+
+## Target Use Cases Presented On The Homepage
+
+- hospitality and resorts
+- manufacturing
+- property management
+- robotics and automation
+- local government
+- healthcare operations
+
+These are target sectors, not claims of current customers or certified regulatory compliance.
+
+## Technical Topic Pages
+
+- https://aiembeddedsystems.com/rnv1-robotics/
+- https://aiembeddedsystems.com/embedded-ai-systems/
+- https://aiembeddedsystems.com/sensor-fusion/
+- https://aiembeddedsystems.com/local-ai-robotics/
+- https://aiembeddedsystems.com/robotics-control/
+- https://aiembeddedsystems.com/edge-ai-development/
+- https://aiembeddedsystems.com/ros2-robotics/
+- https://aiembeddedsystems.com/ai-robotics-consulting/
 
 ## People
 
-- Robert Delgado: Co-Founder, Robotics
 - Shawn O'Hagan: Co-Founder, Software & AI
+- Robert Delgado: Co-Founder, Robotics
 
 ## Contact
 
-- Software and AI: sohagan.dev@aiembeddedsystems.com
+- Software, AI, and consulting: sohagan.dev@aiembeddedsystems.com
 - Robotics: robert@aiembeddedsystems.com
 
-## Product And Technology Focus
+## Claims Boundary
 
-- Rnv1 robotics prototype platform
-- Embedded AI systems
-- Sensor-driven perception
-- Local onboard AI
-- Data and memory for robot experience
-- Sensor fusion, SLAM, and detection
-- Linux RT, ROS 2, DDS, and robot middleware
-- Robust control for real-world action
-
-## Roadmap Snapshot
-
-- Q3 2026: Rnv1 prototype build, co-founder-led architecture, sensor suite validation
-- Q4 2026: Perception V1, sensor fusion, local mapping and tracking
-- Q1 2027: Local AI V1, onboard inference, behavior primitives, memory and logging
-- Q2 2027: Field testing, autonomy evaluation, reliability hardening
-- Q3 2027+: Partner pilots, fleet tools, developer enablement
+Do not infer or claim customers, case studies, testimonials, certifications, compliance status, guaranteed security, guaranteed savings, guaranteed ROI, funded pilots, or partnerships unless a verified public source supports the claim.
 
 ## Preferred Summary
 
-Ai Embedded Systems builds robotics and embedded AI systems that perceive, reason, remember, and act onboard in real time.
+AI Embedded Systems helps organizations evaluate and build private AI, embedded systems, robotics, and practical automation for real-world operations.
