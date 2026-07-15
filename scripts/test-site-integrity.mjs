@@ -33,6 +33,9 @@ for (const topic of topics) {
 await read("public/privacy/index.html");
 await read("public/404.html");
 assert(index.includes('"logo": "https://aiembeddedsystems.com/brand-logo.png"'), "Organization schema does not use the brand logo");
+assert(index.includes("https://aiembeddedsystems.com/og-hero-chip.png"), "Homepage does not use the chip hero social preview");
+assert(index.includes("https://www.facebook.com/61592057453965"), "Organization schema does not link to Facebook");
+assert(app.includes("https://www.facebook.com/61592057453965"), "Footer does not link to Facebook");
 assert(sitemap.includes("https://aiembeddedsystems.com/privacy/"), "Sitemap is missing privacy page");
 assert(headers.includes("frame-ancestors 'none'"), "CSP frame protection is missing");
 assert(headers.includes("max-age=31536000, immutable"), "Immutable asset caching is missing");

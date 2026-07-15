@@ -16,6 +16,9 @@
 /og-rnv1.png
   Cache-Control: public, max-age=604800
 
+/og-hero-chip.png
+  Cache-Control: public, max-age=604800
+
 /brand-logo.png
   Cache-Control: public, max-age=604800
 

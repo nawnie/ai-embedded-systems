@@ -20,6 +20,7 @@ const PUBLIC_FILES = new Set([
   "/inquiry-assistant.js",
   "/llms.txt",
   "/og-rnv1.png",
+  "/og-hero-chip.png",
   "/robots.txt",
   "/sitemap.xml",
   "/topic-page.css",

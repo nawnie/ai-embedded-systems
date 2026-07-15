@@ -7,6 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
+    "build:social": "node scripts/build-social-preview.mjs",
     "test:site": "node scripts/test-site-integrity.mjs",
     "test:inquiry": "node scripts/test-inquiry-assistant.mjs",
     "qa:capture": "node scripts/capture-qa.mjs",

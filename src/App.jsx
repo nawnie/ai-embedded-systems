@@ -5,6 +5,7 @@ import {
   CheckCircle,
   Cpu,
   EnvelopeSimple,
+  FacebookLogo,
   Factory,
   GithubLogo,
   Hospital,
@@ -23,6 +24,7 @@ import studioWorkbench from "./assets/studio-workbench.svg";
 
 const CONTACT_EMAIL = "sohagan.dev@aiembeddedsystems.com";
 const ROBOTICS_EMAIL = "robert@aiembeddedsystems.com";
+const FACEBOOK_URL = "https://www.facebook.com/61592057453965";
 
 const navItems = [
   { label: "Sprint", href: "#sprint", id: "sprint" },
@@ -549,6 +551,10 @@ function Footer() {
 
         <div className="footer-column">
           <h3>Connect</h3>
+          <a href={FACEBOOK_URL} target="_blank" rel="noreferrer">
+            <FacebookLogo size={16} weight="fill" aria-hidden="true" />
+            Facebook <span className="visually-hidden">(opens in a new tab)</span>
+          </a>
           <a href="https://github.com/nawnie/ai-embedded-systems" target="_blank" rel="noreferrer">
             Public repository <span className="visually-hidden">(opens in a new tab)</span>
           </a>
