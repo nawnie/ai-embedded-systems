@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .wrangler/
+.qa/
 .env
 .env.*
 !.env.example
