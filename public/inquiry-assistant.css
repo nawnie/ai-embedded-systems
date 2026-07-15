@@ -137,7 +137,7 @@
   border-radius: 50%;
   color: var(--guide-cream);
   background: var(--guide-olive);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 900;
 }
 
@@ -158,7 +158,7 @@
 .aes-guide__heading span {
   margin-top: 2px;
   color: var(--guide-muted);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
 }
 
 .aes-guide__close {
@@ -227,7 +227,7 @@
   color: var(--guide-olive);
   background: transparent;
   cursor: pointer;
-  font-size: 0.73rem;
+  font-size: 0.78rem;
   font-weight: 800;
 }
 
@@ -245,7 +245,7 @@
 .aes-guide__typing {
   margin: 12px 0 0;
   color: var(--guide-muted);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
 }
 
 .aes-guide__review {
@@ -274,7 +274,7 @@
 
 .aes-guide__summary dt {
   color: var(--guide-muted);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -295,7 +295,7 @@
   display: grid;
   gap: 4px;
   color: var(--guide-muted);
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   font-weight: 800;
 }
 
@@ -329,7 +329,7 @@
   border-radius: 3px;
   color: var(--guide-cream);
   background: var(--guide-ink);
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   font-weight: 900;
   text-align: center;
   text-decoration: none;
@@ -397,7 +397,7 @@
   color: var(--guide-cream);
   background: var(--guide-ink);
   cursor: pointer;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -418,12 +418,41 @@
   padding: 8px 10px;
 }
 
+.aes-guide__consent {
+  position: static !important;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  width: auto !important;
+  height: auto !important;
+  margin-top: 10px;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  color: var(--guide-muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.aes-guide__consent input {
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+}
+
 .aes-guide__notice,
 .aes-guide__status {
   margin: 8px 0 0;
   color: var(--guide-muted);
-  font-size: 0.64rem;
+  font-size: 0.76rem;
   line-height: 1.45;
+}
+
+.aes-guide__notice a {
+  color: var(--guide-olive);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
 .aes-guide__status[hidden] {

@@ -8,19 +8,19 @@
     <meta name="keywords" content="robotics control, autonomous systems control, embedded control" />
     <link rel="canonical" href="https://aiembeddedsystems.com/robotics-control/" />
     <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Ai Embedded Systems" />
-    <meta property="og:title" content="Robotics Control | Ai Embedded Systems" />
+    <meta property="og:site_name" content="AI Embedded Systems" />
+    <meta property="og:title" content="Robotics Control | AI Embedded Systems" />
     <meta property="og:description" content="Robotics control layers that translate perception and planning into reliable, testable physical-world action." />
     <meta property="og:url" content="https://aiembeddedsystems.com/robotics-control/" />
     <meta property="og:image" content="https://aiembeddedsystems.com/og-rnv1.png" />
-    <title>Robotics Control | Ai Embedded Systems</title>
+    <title>Robotics Control | AI Embedded Systems</title>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": "https://aiembeddedsystems.com/robotics-control/#webpage",
         "url": "https://aiembeddedsystems.com/robotics-control/",
-        "name": "Robotics Control | Ai Embedded Systems",
+        "name": "Robotics Control | AI Embedded Systems",
         "description": "Robotics control layers that translate perception and planning into reliable, testable physical-world action.",
         "isPartOf": { "@id": "https://aiembeddedsystems.com/#website" },
         "about": { "@id": "https://aiembeddedsystems.com/#organization" },
@@ -32,15 +32,17 @@
   </head>
   <body>
     <main>
-      <a class="mark" href="/">Ai Embedded Systems</a>
+      <a class="mark" href="/">AI Embedded Systems</a>
+      <nav class="topic-nav" aria-label="Technical work"><a href="/rnv1-robotics/">RNV1</a><a href="/sensor-fusion/">Sensor fusion</a><a href="/local-ai-robotics/">Local AI robotics</a><a href="/ros2-robotics/">ROS 2</a></nav>
       <h1>Robotics Control</h1>
       <p>Robotics control work turns perception and planning into dependable action. We focus on control paths that can be tested, monitored, and hardened for real-world robotic platforms.</p>
       <ul>
-        <li>Control execution</li>
-        <li>Health monitoring</li>
-        <li>Behavior primitives</li>
-        <li>Reliability hardening</li>
+        <li>Control execution with bounded commands and state checks</li>
+        <li>Health monitoring that supports safe degradation</li>
+        <li>Behavior primitives with observable entry and exit rules</li>
+        <li>Recovery testing for interrupted and failed actions</li>
       </ul>
+      <section class="topic-section"><h2>Control should remain understandable</h2><p>Perception and planning only become useful when a machine can act predictably. A control layer must translate intent into bounded commands, report what actually happened, and give operators a reliable way to stop, recover, or take over.</p><p>A focused review maps commands, state, safety boundaries, and failure paths. A prototype can then exercise one behavior end to end with logs and pass criteria, creating a foundation for broader autonomy without treating a successful demo as proof of field reliability.</p><div class="related-links"><a href="/embedded-ai-systems/">Embedded AI systems</a><a href="/edge-ai-development/">Edge AI development</a><a href="/ai-robotics-consulting/">Consulting approach</a></div></section>
       <a class="back" href="/">Back to the main site</a>
     </main>
     <footer class="contact-footer" aria-labelledby="contact-title">
@@ -53,8 +55,10 @@
         <div class="contact-footer__actions">
           <a class="contact-button" href="mailto:sohagan.dev@aiembeddedsystems.com?subject=AI%20Embedded%20Systems%20project%20inquiry">Software &amp; AI inquiry</a>
           <a class="contact-button contact-button--secondary" href="mailto:robert@aiembeddedsystems.com?subject=AI%20Embedded%20Systems%20robotics%20inquiry">Robotics inquiry</a>
+          <p class="contact-footer__direct">If email does not open, write to <a href="mailto:robert@aiembeddedsystems.com">robert@aiembeddedsystems.com</a>.</p>
         </div>
       </div>
+      <div class="site-legal"><a href="/privacy/">Privacy</a><a href="/">Main site</a></div>
     </footer>
     <script src="/inquiry-assistant.js" defer></script>
   </body>

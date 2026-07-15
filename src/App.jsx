@@ -27,6 +27,7 @@ const ROBOTICS_EMAIL = "robert@aiembeddedsystems.com";
 const navItems = [
   { label: "Sprint", href: "#sprint", id: "sprint" },
   { label: "Industries", href: "#industries", id: "industries" },
+  { label: "Work", href: "#technical-work", id: "technical-work" },
   { label: "Why us", href: "#about", id: "about" },
   { label: "Contact", href: "#contact", id: "contact" },
 ];
@@ -106,6 +107,17 @@ const reasons = [
   "Private and secure by design",
   "Real-world operations experience",
   "Recommendations tied to measurable value",
+];
+
+const technicalPages = [
+  { title: "RNV1 robotics", href: "/rnv1-robotics/", text: "A field-oriented robotics platform for testing sensing, local intelligence, and control under real constraints." },
+  { title: "Embedded AI systems", href: "/embedded-ai-systems/", text: "On-device perception and decision support designed around hardware, latency, power, and data boundaries." },
+  { title: "Sensor fusion", href: "/sensor-fusion/", text: "Practical ways to combine camera, range, motion, and positioning data into a more reliable operating picture." },
+  { title: "Local AI robotics", href: "/local-ai-robotics/", text: "Robotic systems that keep useful inference close to the machine instead of depending on a constant cloud connection." },
+  { title: "Robotics control", href: "/robotics-control/", text: "Control architecture that keeps safety, operator authority, recovery behavior, and observable state in view." },
+  { title: "Edge AI development", href: "/edge-ai-development/", text: "Model and software integration for constrained computers deployed near equipment, sensors, and operations." },
+  { title: "ROS 2 robotics", href: "/ros2-robotics/", text: "ROS 2 architecture, integration, and testing for modular robotic systems and their surrounding tools." },
+  { title: "AI robotics consulting", href: "/ai-robotics-consulting/", text: "A focused path from an operational problem to a bounded technical decision and a credible first build." },
 ];
 
 const founders = [
@@ -395,6 +407,33 @@ function Industries() {
   );
 }
 
+function TechnicalWork() {
+  return (
+    <section className="technical-work" id="technical-work" aria-labelledby="technical-work-title">
+      <div className="section-heading">
+        <p className="eyebrow">Technical work</p>
+        <h2 id="technical-work-title">See where the systems work meets the operation</h2>
+        <p>
+          These pages explain the engineering areas behind our consulting work and the
+          questions we use to keep a first project useful and appropriately scoped.
+        </p>
+      </div>
+      <div className="technical-grid">
+        {technicalPages.map((page) => (
+          <article className="technical-card" key={page.href}>
+            <h3><a href={page.href}>{page.title}</a></h3>
+            <p>{page.text}</p>
+            <a className="technical-card-link" href={page.href}>
+              Read the technical overview
+              <ArrowRight size={14} weight="bold" aria-hidden="true" />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function About() {
   return (
     <section className="about-band" id="about" aria-labelledby="about-title">
@@ -434,7 +473,7 @@ function About() {
             src={studioWorkbench}
             width="440"
             height="471"
-            loading="eager"
+            loading="lazy"
             decoding="async"
             alt="Laptop and engineering notebook on a warm, dimly lit workbench"
           />
@@ -505,21 +544,19 @@ function Footer() {
 
         <div className="footer-column">
           <h3>Technical work</h3>
-          <a href="/rnv1-robotics/">RNV1 robotics</a>
-          <a href="/embedded-ai-systems/">Embedded AI systems</a>
-          <a href="/sensor-fusion/">Sensor fusion</a>
-          <a href="/ros2-robotics/">ROS 2 robotics</a>
+          {technicalPages.map((page) => <a href={page.href} key={page.href}>{page.title}</a>)}
         </div>
 
         <div className="footer-column">
           <h3>Connect</h3>
           <a href="https://github.com/nawnie/ai-embedded-systems" target="_blank" rel="noreferrer">
-            Public repository
+            Public repository <span className="visually-hidden">(opens in a new tab)</span>
           </a>
           <a href="https://github.com/nawnie" target="_blank" rel="noreferrer">
             <GithubLogo size={15} aria-hidden="true" />
-            GitHub
+            GitHub <span className="visually-hidden">(opens in a new tab)</span>
           </a>
+          <a href="/privacy/">Privacy</a>
         </div>
       </div>
 
@@ -542,6 +579,7 @@ function App() {
         <Hero />
         <Sprint />
         <Industries />
+        <TechnicalWork />
         <About />
         <FooterBanner />
       </main>

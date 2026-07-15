@@ -3,6 +3,7 @@
 
   const HOME_SEEN_KEY = "aes_home_seen_at";
   const DISMISSED_KEY = "aes_inquiry_guide_dismissed";
+  const CONSENT_KEY = "aes_inquiry_guide_gemini_consent";
   const STATE_KEY = "aes_inquiry_guide_state_v1";
   const HOME_SEEN_MAX_AGE_MS = 2 * 60 * 60 * 1000;
   const SHOW_DELAY_MS = 4500;
@@ -39,23 +40,23 @@
     host.className = "aes-guide";
     host.dataset.aesInquiryGuide = "";
     host.innerHTML = `
-      <section class="aes-guide__panel" role="dialog" aria-modal="false" aria-labelledby="aes-guide-title" hidden>
+      <section class="aes-guide__panel" role="dialog" aria-modal="false" aria-labelledby="aes-guide-title" aria-describedby="aes-guide-intro aes-guide-privacy-note" hidden>
         <header class="aes-guide__header">
           <span class="aes-guide__header-mark" aria-hidden="true">AI</span>
           <div class="aes-guide__heading">
-            <strong id="aes-guide-title">Project guide</strong>
-            <span>Build a clear inquiry, one question at a time</span>
+            <strong id="aes-guide-title" tabindex="-1">Project guide</strong>
+            <span id="aes-guide-intro">Build a clear inquiry, one question at a time</span>
           </div>
           <button class="aes-guide__close" type="button" aria-label="Close project guide">×</button>
         </header>
         <div class="aes-guide__body">
-          <div class="aes-guide__messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+          <div class="aes-guide__messages" id="aes-guide-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
           <div class="aes-guide__quick-replies" aria-label="Suggested starting points">
             <button type="button" data-guide-reply="I’m exploring private AI or software automation.">Private AI</button>
             <button type="button" data-guide-reply="I have a robotics or embedded systems project.">Robotics</button>
             <button type="button" data-guide-reply="I know the problem, but I’m not sure what kind of solution fits.">Not sure yet</button>
           </div>
-          <p class="aes-guide__typing" hidden>Project guide is thinking…</p>
+          <p class="aes-guide__typing" role="status" hidden>Project guide is thinking…</p>
           <section class="aes-guide__review" aria-labelledby="aes-guide-review-title" hidden>
             <h3 id="aes-guide-review-title">Review your inquiry</h3>
             <dl class="aes-guide__summary"></dl>
@@ -67,7 +68,7 @@
             <div class="aes-guide__review-actions">
               <a class="aes-guide__email-action" href="#">Open prepared email</a>
               <div class="aes-guide__review-button-row">
-                <button class="aes-guide__secondary-action" type="button" data-guide-copy>Copy summary</button>
+                <button class="aes-guide__secondary-action" type="button" data-guide-copy>Copy inquiry</button>
                 <button class="aes-guide__secondary-action" type="button" data-guide-restart>Start over</button>
               </div>
             </div>
@@ -77,11 +78,12 @@
         <form class="aes-guide__composer">
           <label for="aes-guide-input">Tell the project guide about your need</label>
           <div class="aes-guide__composer-row">
-            <textarea id="aes-guide-input" name="message" rows="1" maxlength="900" placeholder="Describe the problem or goal…" required></textarea>
+            <textarea id="aes-guide-input" name="message" rows="1" maxlength="900" aria-describedby="aes-guide-privacy-note aes-guide-consent" placeholder="Describe the problem or goal…" required></textarea>
             <button class="aes-guide__send" type="submit">Send</button>
           </div>
           <button class="aes-guide__finish" type="button" hidden>Prepare my inquiry</button>
-          <p class="aes-guide__notice">Uses Google Gemini. Do not share confidential data, passwords, keys, private records, or source code.</p>
+          <label class="aes-guide__consent" id="aes-guide-consent"><input type="checkbox" name="geminiConsent" /> <span>I understand that my project description is sent to Google Gemini. Do not include confidential information.</span></label>
+          <p class="aes-guide__notice" id="aes-guide-privacy-note">Read our <a href="/privacy/">privacy notice</a> before using the guide.</p>
           <p class="aes-guide__status" role="status" hidden></p>
         </form>
       </section>
@@ -106,6 +108,7 @@
     const summaryElement = host.querySelector(".aes-guide__summary");
     const form = host.querySelector(".aes-guide__composer");
     const input = form.elements.message;
+    const consentInput = form.elements.geminiConsent;
     const sendButton = host.querySelector(".aes-guide__send");
     const finishButton = host.querySelector(".aes-guide__finish");
     const statusElement = host.querySelector(".aes-guide__status");
@@ -114,6 +117,12 @@
     const organizationInput = formOwnerInput(host, "guideOrganization");
     const emailInput = formOwnerInput(host, "guideEmail");
     let busy = false;
+
+    consentInput.checked = safeSessionGet(CONSENT_KEY) === "1";
+    consentInput.addEventListener("change", () => {
+      safeSessionSet(CONSENT_KEY, consentInput.checked ? "1" : "0");
+      if (consentInput.checked) clearStatus();
+    });
 
     if (!state.messages.length) {
       state.messages.push({ role: "model", text: GREETING });
@@ -167,7 +176,7 @@
       launcher.querySelector("span:last-child").textContent = open ? "Project guide is open" : "Need help shaping your project?";
 
       if (open) {
-        window.setTimeout(() => input.focus(), 0);
+        window.setTimeout(() => host.querySelector("#aes-guide-title").focus(), 0);
         scrollMessagesToEnd();
       } else {
         launcher.focus();
@@ -183,6 +192,12 @@
       const text = String(rawText || "").trim();
 
       if (!text || busy) {
+        return;
+      }
+
+      if (!consentInput.checked) {
+        showStatus("Please confirm the Gemini notice before sending project details.", true);
+        consentInput.focus();
         return;
       }
 
@@ -251,7 +266,9 @@
 
     function setBusy(nextBusy) {
       busy = nextBusy;
+      panel.setAttribute("aria-busy", String(nextBusy));
       input.disabled = nextBusy;
+      consentInput.disabled = nextBusy;
       sendButton.disabled = nextBusy;
       finishButton.disabled = nextBusy;
       typingElement.hidden = !nextBusy;
@@ -357,7 +374,13 @@
 
     async function copySummary() {
       const inquiry = normalizeInquiry(state.inquiry);
+      const recipient = inquiry.lane === "robotics" ? ROBOTICS_EMAIL : SOFTWARE_EMAIL;
       const summary = [
+        `Send to: ${recipient}`,
+        nameInput.value.trim() ? `Name: ${nameInput.value.trim()}` : "",
+        organizationInput.value.trim() ? `Organization: ${organizationInput.value.trim()}` : "",
+        emailInput.value.trim() ? `Best contact email: ${emailInput.value.trim()}` : "",
+        "",
         `Project lane: ${laneLabel(inquiry.lane) || "Not sure yet"}`,
         inquiry.project_type ? `Project type: ${inquiry.project_type}` : "",
         inquiry.challenge ? `Challenge: ${inquiry.challenge}` : "",
@@ -368,9 +391,9 @@
 
       try {
         await navigator.clipboard.writeText(summary);
-        showStatus("Inquiry summary copied.", false);
+        showStatus(`Inquiry copied. Send it to ${recipient} if your email app does not open.`, false);
       } catch {
-        showStatus("Copy was blocked by the browser. The prepared email still works.", true);
+        showStatus(`Copy was blocked. You can still write directly to ${recipient}.`, true);
       }
     }
 

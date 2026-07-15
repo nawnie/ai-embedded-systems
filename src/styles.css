@@ -72,6 +72,17 @@ img {
   outline-offset: 4px;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: fixed;
   top: 10px;
@@ -339,7 +350,7 @@ img {
 .cta-note {
   margin: 11px 0 0;
   color: #747064;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -358,7 +369,7 @@ img {
   gap: 11px;
   align-items: start;
   color: #393831;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.45;
   text-transform: uppercase;
@@ -407,7 +418,7 @@ img {
 }
 
 .hero-image-caption span {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -511,7 +522,7 @@ img {
 
 .sprint-card-heading span {
   color: var(--olive-dark);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -558,7 +569,7 @@ img {
 .payment-note {
   margin: 12px 0 0;
   color: #625f55;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   text-align: center;
 }
@@ -631,6 +642,59 @@ img {
   width: fit-content;
   margin-top: auto;
   padding-top: 22px;
+  color: var(--olive-dark);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.technical-work {
+  width: min(calc(100% - 72px), var(--max-width));
+  margin: 0 auto;
+  padding: 18px 0 76px;
+}
+
+.technical-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.technical-card {
+  display: flex;
+  min-height: 260px;
+  padding: 26px 24px;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 248, 241, 0.74);
+}
+
+.technical-card h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 23px;
+  line-height: 1.12;
+}
+
+.technical-card h3 a:hover,
+.technical-card h3 a:focus-visible {
+  color: var(--olive-dark);
+}
+
+.technical-card p {
+  margin: 16px 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.technical-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  margin-top: auto;
   color: var(--olive-dark);
   font-size: 12px;
   font-weight: 800;
@@ -709,7 +773,7 @@ img {
 
 .founder-card > span {
   color: #aaa75f;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -782,7 +846,7 @@ img {
 .contact-kicker {
   margin: 0 0 14px;
   color: #aaa75f;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -816,7 +880,7 @@ img {
 .contact-note {
   margin: 10px 0 18px;
   color: #aaa598;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.45;
   text-align: center;
 }
@@ -911,7 +975,7 @@ img {
 
 .footer-column h3 {
   margin: 0 0 5px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -938,12 +1002,16 @@ img {
   padding-top: 18px;
   border-top: 1px solid var(--line);
   color: #6b685e;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 @media (max-width: 1320px) {
   .industry-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .technical-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1079,7 +1147,7 @@ img {
   }
 
   .brand-copy > span {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .hero-copy {
@@ -1105,6 +1173,7 @@ img {
   .capability-row,
   .outcome-row,
   .industry-grid,
+  .technical-grid,
   .reason-grid,
   .founder-list,
   .about-inner,
