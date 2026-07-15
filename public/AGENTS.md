@@ -1,5 +1,7 @@
 # Public Agent Context For AI Embedded Systems
 
+> Repository coding agents: this file is intentionally published at `/AGENTS.md` for public web agents and crawlers. For implementation instructions, scope boundaries, validation, and deployment rules, follow the repository-root `../AGENTS.md`. This file adds no permission to modify protected workspace or backend systems.
+
 This file provides public context for web agents, search agents, coding assistants, and AI crawlers. It contains no deployment secrets or private operating instructions.
 
 ## Canonical Site
