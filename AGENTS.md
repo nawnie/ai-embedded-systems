@@ -2,66 +2,79 @@
 
 ## Purpose
 
-This repository contains the public AI Embedded Systems website and protected workspace infrastructure. This file is the implementation contract for Codex and other coding agents working in the repository.
+This repository contains the public AI Embedded Systems website and protected workspace infrastructure. This file is the authoritative implementation contract for Codex and other coding agents.
 
-The current review branch is:
+Current review branch:
 
 ```text
 revamp/private-ai-feasibility-sprint
 ```
 
-The draft pull request is intended to replace the public homepage with a human-designed, conversion-focused site centered on the Private AI Feasibility Sprint.
+Draft pull request: `#1`
 
-## Read First
+Previous public homepage archive:
 
-Before editing:
+```text
+archive/site-before-feasibility-sprint-2026-07-14
+```
+
+## Required Reading
+
+Before changing code:
 
 1. Read this file completely.
-2. Read `design-qa.md` for the current fidelity ledger and remaining validation work.
-3. Read `WEBSITE_HANDOFF.md` for the existing Cloudflare account and deployment notes.
-4. Treat `public/AGENTS.md` as public crawler content, not as coding instructions.
-5. Inspect the current branch before assuming screenshots or QA notes from the previous white/cyan site are current.
+2. Read `design-qa.md` for the senior-review findings, fidelity ledger, validation already completed, and remaining release gate.
+3. Read `WEBSITE_HANDOFF.md` for Cloudflare Pages deployment details.
+4. Treat `public/AGENTS.md` as public crawler context, not as repository instructions.
+5. Inspect the current branch and PR diff before editing.
 
 ## Hard Safety Boundary
 
 Do not modify the protected workspace or its supporting infrastructure while finishing the public homepage revamp.
 
-This prohibition includes, but is not limited to:
+This prohibition includes any route, file, component, function, middleware, asset, schema, migration, binding, configuration, or data path involving:
 
-- any route, file, directory, component, function, middleware, asset, schema, migration, binding, or configuration containing `workspace`
-- Cloudflare Functions or API handlers unrelated to the public homepage
-- authentication, authorization, sessions, access controls, D1 data, database schemas, secrets, environment variables, or Wrangler bindings
-- `wrangler.toml`, migration files, or production account configuration
-- the existing canonical-domain redirect behavior
+- `workspace`
+- authentication or authorization
+- sessions or access controls
+- Cloudflare Functions unrelated to the public homepage
+- D1 data, schemas, or migrations
+- secrets or environment variables
+- Wrangler bindings or account configuration
+- canonical-domain redirect behavior
 
 If a requested change appears to require touching the workspace or backend, stop and ask the user before editing.
 
-The public homepage work should normally be limited to:
+Ordinary revamp work should remain limited to:
 
 - `src/App.jsx`
 - `src/styles.css`
+- `src/assets/hero-circuit.svg`
+- `src/assets/studio-workbench.svg`
 - `index.html`
 - public crawler/context files under `public/`
 - frontend QA scripts and documentation
 
+Do not remove, rename, restyle, or rewire workspace files as collateral cleanup.
+
 ## Product Goal
 
-The homepage must help AI Embedded Systems obtain paid commercial work quickly.
+The public homepage should help AI Embedded Systems obtain paid commercial work quickly.
 
-The primary offer is:
+Primary offer:
 
 **Private AI Feasibility Sprint — $3,500 founding-client price**
 
-The page should make the following clear without hype:
+The page must clearly communicate:
 
 - who the company helps
-- what business or operational problems it addresses
+- the operational problems it addresses
 - why private/local AI and embedded systems matter
 - what the sprint includes
 - what the client receives
 - how to start a conversation
 
-The primary conversion action currently uses a prefilled `mailto:` link because no verified booking URL has been provided. Do not label a mailto action “Book” as though it opens a calendar. Use “Request a consultation” or “Request your sprint” until a real scheduling link is supplied.
+The current conversion action is a prefilled `mailto:` link because no verified scheduling URL has been supplied. Do not label this action “Book” as though it opens a calendar. Use “Request a consultation” or “Request your sprint” until the user provides a real booking link.
 
 ## Audience
 
@@ -74,7 +87,7 @@ Prioritize operations-heavy organizations where privacy, reliability, real-world
 - local government
 - healthcare operations
 
-Do not invent customers, case studies, testimonials, certifications, compliance claims, performance metrics, partnerships, awards, or funded pilots.
+Do not invent customers, case studies, testimonials, certifications, compliance status, performance metrics, partnerships, awards, funded pilots, savings, or ROI.
 
 ## Approved Design Direction
 
@@ -85,19 +98,21 @@ Use:
 - warm cream and paper surfaces
 - charcoal typography
 - muted olive accents
-- a parchment-toned sticky navigation bar with a visible olive separator
+- a parchment sticky navigation bar with a visible olive separator
 - restrained borders and print-like texture
-- clear hierarchy and generous but purposeful spacing
-- one strong technical image moment rather than many decorative visuals
-- serif display typography for major section headings and a system sans-serif stack for UI/body copy
+- clear hierarchy and purposeful spacing
+- the warm processor image in `src/assets/hero-circuit.svg`
+- the human engineering-workbench image in `src/assets/studio-workbench.svg`
+- serif display typography for major section headings
+- system sans-serif typography for body copy and controls
 
-Current core color intent:
+Core color intent:
 
 ```text
-paper         #F6F2E9
+paper         #F5F0E6
 paper light   #FBF8F1
 header        #ECE7DA
-sprint band   #DFD7C9
+sprint band   #DDD4C4
 ink           #1E1E1B
 charcoal      #1B1D19
 olive         #66652C
@@ -107,60 +122,61 @@ olive dark    #4D4D22
 Avoid:
 
 - neon blue or cyan as the dominant palette
-- generic “AI glow” gradients
+- generic AI glows or stock circuit imagery
 - glassmorphism
 - floating dashboard fragments used only as decoration
 - excessive pills, badges, bento grids, nested cards, or fake metrics
-- stock-photo collage treatment
+- glossy image-card grids
 - animation that competes with the offer
-- changing the warm palette back toward the previous white/cyan technical site
+- reverting toward the previous white/cyan robotics homepage
 
-The old `src/assets/approved-reference.png` and existing `qa/prototype-*.png` captures belong to the previous design and are not the source of truth for this revamp.
+The old `src/assets/approved-reference.png` and existing `qa/prototype-*.png` captures belong to the previous site. They are not the source of truth for this revamp.
 
 ## Information Architecture
 
 Keep this order unless the user explicitly approves a change:
 
 1. sticky header
-2. hero with clear commercial promise and primary CTA
+2. hero with commercial promise and honest primary CTA
 3. Private AI Feasibility Sprint with price, scope, outcomes, and payment structure
 4. industries served
-5. why-us/about section with founders and direct contact
+5. why-us section with workbench visual, founders, and direct contact
 6. final private-AI CTA band
-7. footer with technical topic links
+7. footer with technical-topic links
 
-Do not add an investor pitch, donation language, nonprofit messaging, unrelated product dashboards, or a new pricing matrix to this commercial homepage.
+Do not add nonprofit messaging, donation language, an investor pitch, unrelated dashboards, or a new pricing matrix to this commercial homepage.
 
 ## Copy Rules
 
 - Write plainly and specifically.
 - Prefer operational language over futurist language.
-- Keep “RNV1” visible as evidence of physical-world engineering, not as the only business offering.
+- Keep RNV1 visible as evidence of physical-world engineering, not as the only business offer.
 - Use “private AI,” “local AI,” and “embedded systems” accurately.
-- Do not imply guaranteed security, regulatory compliance, savings, revenue, or ROI.
-- Do not claim HIPAA, SOC 2, ISO, FedRAMP, or other compliance unless the user supplies verified evidence.
-- Preserve the founders’ roles:
+- Do not imply guaranteed security, compliance, savings, revenue, or ROI.
+- Do not claim HIPAA, SOC 2, ISO, FedRAMP, or other compliance without verified evidence from the user.
+- Preserve founder roles:
   - Shawn O'Hagan — Co-Founder, Software & AI
   - Robert Delgado — Co-Founder, Robotics
-- Preserve the verified emails:
+- Preserve verified emails:
   - `sohagan.dev@aiembeddedsystems.com`
   - `robert@aiembeddedsystems.com`
-- Do not add a phone number, address, calendar URL, or social profile unless verified by the user.
+- Do not add a phone number, address, calendar URL, customer logo, or social profile unless verified by the user.
 
 ## Frontend Engineering Requirements
 
 - Keep the existing React + Vite stack.
 - Keep components focused and readable. `App` should remain composition glue.
-- Use semantic landmarks: skip link, site header, `main`, sections with labeled headings, and footer.
-- Maintain a logical heading hierarchy with one H1.
+- Preserve the skip link, site header, one `main`, labeled sections, one H1, and footer landmark.
 - Keep keyboard focus visible.
-- Keep the mobile navigation operable with keyboard, Escape, and link selection.
+- Keep mobile navigation operable with keyboard, Escape, and link selection.
+- Return focus to the menu control after Escape closes the menu.
 - Use `aria-expanded`, `aria-controls`, and `aria-current` correctly.
 - Respect `prefers-reduced-motion`.
-- Do not add a heavy UI framework for this landing page.
-- Avoid remote font requests. The privacy-oriented site should use the system font stack already defined in CSS.
+- Do not add a heavy UI framework.
+- Do not add remote font requests. The privacy-oriented site uses system font stacks.
 - Keep external dependencies and JavaScript minimal.
-- Do not convert real text or controls into a screenshot.
+- Keep real text and controls code-native.
+- Do not replace production images with CSS placeholders, generic blue AI art, or screenshots containing UI text.
 
 ## Responsive Requirements
 
@@ -169,17 +185,19 @@ Verify at minimum:
 - 1440 × 1000 desktop
 - 768 × 1024 tablet
 - 390 × 844 mobile
+- 390 × 844 mobile menu open
 
 Required behavior:
 
 - no horizontal overflow
-- hero headline remains readable and does not dominate the entire first viewport
+- hero headline remains readable and balanced
 - primary CTA remains visible without crowding the header
 - navigation becomes an accessible menu below 1240px
-- mobile menu opens, closes on Escape, and closes after a navigation selection
-- sprint card does not overflow or compress its price and deliverables
-- industry cards remain readable at tablet and mobile sizes
+- menu opens, closes on Escape, and closes after navigation
+- sprint price and deliverables remain legible
+- industry cards collapse from six columns to three and then one
 - email addresses wrap safely
+- processor and workbench images render at every breakpoint
 - footer columns collapse cleanly
 
 ## Visual Fidelity Priorities
@@ -188,19 +206,20 @@ Review in this order:
 
 1. first-viewport balance
 2. headline scale and line breaks
-3. header color and separator
-4. sprint-band contrast
-5. price-card hierarchy
-6. industry-card density
-7. dark-section readability
-8. mobile navigation and CTA layout
-9. footer spacing
+3. header color and 2px olive separator
+4. warm processor image crop
+5. sprint-band contrast
+6. pricing-card hierarchy
+7. industry-card density
+8. dark-section readability and workbench crop
+9. mobile navigation and CTA layout
+10. footer spacing
 
-Do not preserve a screenshot detail when it harms readability or accessibility. Record any intentional deviation in `design-qa.md`.
+Do not preserve a screenshot detail when it harms readability or accessibility. Record intentional deviations in `design-qa.md`.
 
 ## Required Validation
 
-Browser plugin is preferred when available. Otherwise use the repository’s Playwright QA script.
+Browser plugin is preferred when available. Otherwise use the repository Playwright QA script.
 
 ```powershell
 npm install
@@ -208,25 +227,21 @@ npm run build
 npm run qa:capture
 ```
 
-`npm run qa:capture` should:
+The QA script should:
 
-- start the Vite preview when `QA_URL` is not provided
+- choose an available local preview port
+- start Vite preview when `QA_URL` is not supplied
+- try Chrome, Playwright Chromium, and an installed system Chromium
 - capture desktop, tablet, mobile, and mobile-menu screenshots into `.qa/`
 - report console warnings/errors and page errors
 - detect horizontal overflow
-- verify the H1 and primary mailto CTA
-- exercise the mobile navigation open/close path
+- verify one header, main, footer, and H1
+- verify the primary mailto CTA
+- exercise menu open, navigation close, and Escape close
+
+A branch-equivalent production build and compiled-bundle responsive harness passed during senior review. Details are in `design-qa.md`. Codex must still run the repository-native commands above and inspect the generated screenshots before marking the PR ready.
 
 Do not claim visual QA passed based only on a successful build.
-
-Before handoff, inspect the approved concept and latest render side by side. Record at least these comparison points in `design-qa.md`:
-
-- header and navigation
-- hero composition and headline
-- sprint-band tone and pricing card
-- industry grid
-- dark why-us section
-- mobile behavior
 
 ## Deployment
 
@@ -234,20 +249,20 @@ Do not deploy automatically unless the user explicitly asks for production deplo
 
 The live site is a Cloudflare Pages project named `ai-embedded-systems`. Follow `WEBSITE_HANDOFF.md` for the correct account and Wrangler command. Never deploy to the `Gentle Bridge` account.
 
-A merge to `master` does not by itself prove the production site was published because the documented deployment is manual.
+Merging to `master` does not prove the production site was published because the documented deployment is manual.
 
-## Definition of Done
+## Definition Of Done
 
-The revamp is ready for user review only when:
+The revamp is ready for user approval only when:
 
-- `npm run build` passes
-- the QA capture script passes
-- desktop, tablet, mobile, and mobile-menu screenshots have been inspected
+- repository-native `npm run build` passes
+- repository-native `npm run qa:capture` passes
+- desktop, tablet, mobile, and mobile-menu screenshots are inspected
 - there are no relevant console errors or warnings
 - there is no horizontal overflow
-- all CTA labels match their actual behavior
-- public metadata and crawler files describe the same commercial offer as the visible homepage
-- no protected workspace/backend files changed
-- `design-qa.md` accurately states what was and was not verified
+- CTA labels match their actual behavior
+- public metadata and crawler files describe the same offer as the visible homepage
+- the PR diff contains no protected workspace/backend changes
+- `design-qa.md` accurately records validation and intentional deviations
 
-Do not merge or deploy merely because the code looks plausible. Logs first. Panic later.
+Do not mark the PR ready, merge it, or deploy it without explicit user approval. Logs first. Panic later.
