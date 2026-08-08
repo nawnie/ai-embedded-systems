@@ -68,3 +68,5 @@ Do not infer or claim customers, case studies, testimonials, certifications, com
 ## Preferred Summary
 
 AI Embedded Systems helps organizations evaluate and build private AI, embedded systems, robotics, and practical automation for real-world operations.
+
+Made by https://www.aiembeddedsystems.com/
