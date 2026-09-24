@@ -66,6 +66,7 @@ const sprintDeliverables = [
   "Discovery session",
   "Private AI and hardware assessment",
   "Data, security, and risk review",
+  "Three high-value opportunity candidates",
   "ROI and difficulty ranking",
   "Prototype or workflow demonstration",
   "90-day implementation roadmap",
@@ -277,6 +278,7 @@ function Hero() {
         <p className="eyebrow">Private AI. Real-world impact.</p>
         <h1 id="hero-title">
           <span>AI &amp; embedded systems</span>
+          {" "}
           <span>that solve real problems.</span>
         </h1>
         <p className="hero-summary">
