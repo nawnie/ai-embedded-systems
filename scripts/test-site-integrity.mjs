@@ -17,10 +17,27 @@ const topics = [
 const read = (path) => readFile(join(root, path), "utf8");
 const app = await read("src/App.jsx");
 const index = await read("index.html");
+const offerDocs = {
+  "README": await read("README.md"),
+  "public agent context": await read("public/AGENTS.md"),
+  "crawler summary": await read("public/llms.txt"),
+};
 const headers = await read("public/_headers");
 const sitemap = await read("public/sitemap.xml");
 const assistant = await read("public/inquiry-assistant.js");
 const { onRequest: runMiddleware } = await import("../functions/_middleware.js");
+
+const opportunityDeliverable = "three high-value opportunity candidates";
+for (const [sourceName, sourceText] of Object.entries({
+  "homepage deliverables": app,
+  "homepage metadata and no-JavaScript copy": index,
+  ...offerDocs,
+})) {
+  assert(
+    sourceText.toLowerCase().includes(opportunityDeliverable),
+    `${sourceName} is missing the published opportunity-candidate deliverable`,
+  );
+}
 
 for (const topic of topics) {
   const html = await read(`public/${topic}/index.html`);
@@ -51,7 +68,7 @@ assert(allowed.status === 200, "Middleware blocked a known page");
 assert(missing.status === 404 && (await missing.text()).includes("Page not found"), "Middleware did not return the explicit 404 page");
 assert(redirected.status === 301 && redirected.headers.get("location") === "https://aiembeddedsystems.com/privacy/", "Canonical redirect changed");
 
-console.log(`Site integrity checks passed for ${topics.length} technical pages, privacy, 404 routing, headers, schema, and project guide.`);
+console.log(`Site integrity checks passed for ${topics.length} technical pages, privacy, 404 routing, headers, schema, project guide, and primary offer scope.`);
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);

@@ -28,6 +28,7 @@ The sprint includes:
 - discovery session
 - private AI and hardware assessment
 - data, security, and risk review
+- three high-value opportunity candidates
 - ROI and difficulty ranking
 - prototype or workflow demonstration
 - 90-day implementation roadmap
